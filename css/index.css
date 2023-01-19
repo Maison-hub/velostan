@@ -1,0 +1,439 @@
+.heroSection{
+    background-color: var(--grey2);
+    height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.heroSection .bgimg{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height:90% ;
+}
+
+.heroSection .leftSide{
+    height: 100%;
+    width: 70%;
+    padding: 10vh 0px 0 10vw;
+    position: relative;
+    background: linear-gradient(90deg, var(--grey2) 72%, rgba(64,64,64,0.0) 100%);
+    z-index: 2;
+}
+
+.heroSection .content{
+    position: relative;
+    z-index: 2;
+    height: 75%;
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:  space-around;
+}
+
+.heroSection .content h1{
+    color: var(--mainGreen);
+    text-shadow: 0px 0px 4px var(--mainGreen);
+    font-size: clamp(22px, 6vw,58px);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.heroSection .content p{
+    width: 65%;
+    min-width: 300px;
+    color: var(--mainWhite);
+    font-size:clamp(12px, 2vw , 22px) ;
+}
+
+.heroSection .mainImg{
+    position: absolute;
+    border-radius: var(--radius);
+    background-color: var(--grey2);
+    height: 70%;
+    right: 100px;
+    top: 46%;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.heroSection .arrowDown{
+    position: absolute;
+    z-index: 3;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all .2s ease-in-out;
+    animation: arrowDown .4s ease-in-out 0s infinite alternate;
+}
+.heroSection .arrowDown.hide{
+    opacity: 0;
+}
+.heroSection .arrowDown img{
+    width: 3vw;
+}
+
+@keyframes arrowDown {
+    0%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(-5px);
+    }
+}
+
+/*------------------------------------*/
+
+.nbSection{
+    background-color: var(--grey2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 30px;
+    overflow: visible;
+    margin-bottom: 100px;
+}
+
+
+.nbSection .container{
+    width: 100vw;
+    background-color: var(--grey1);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px 20px;
+    box-shadow: 30px 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nbSection .container .flexItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--grey4);
+    text-transform: uppercase;
+}
+
+
+.nbSection #totalDispo,#totalLibre{
+    color: var(--mainWhite);
+    font-size: clamp(22px, 6vw,58px);
+    font-weight: 900;
+    margin-bottom: 10%;
+}
+
+/*------------------------------------*/
+
+.mainSection{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 50px #4EB09C;
+    background-color: var(--mainGreen);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+}
+
+.mainSection .card{ 
+    width: 80%;
+    height: 80%;
+    border-radius: var(--radius);
+    background-color: var(--grey2);
+    box-shadow: 30px 20px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px 70px;
+}
+
+.mainSection .card .select{
+ width: 100%;
+ color: var(--mainWhite);
+ cursor: pointer;
+}
+
+.mainSection .card .select .choice{
+    padding-right: 10%;
+    background-color: var(--grey3);
+    background-image: url(../images/icon/arrow.svg);
+    background-repeat: no-repeat;
+    background-position: right 3% center;
+    background-size: 2.5vw;
+    border-radius: var(--radius);
+    display: flex;
+    width: 100%;
+    border: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    user-select: none;
+    transition: all .2s ease-in-out;
+    box-shadow: 0px 0px 35px var(--grey3);
+    color: var(--mainWhite);
+    font-size:clamp(12px, 2vw , 22px) ;
+}
+.mainSection .card .select .choice:hover{
+    background-color: var(--grey1);
+    box-shadow: 0px 0px 35px var(--grey1);
+}
+
+.mainSection .card .select .choice.open{
+    border-radius: 0px;
+    border-top-right-radius:20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.mainSection .select .choice span{
+    font-size:clamp(12px, 2vw , 22px) ;
+}
+
+.mainSection .select .choice img{
+    width: 2.5vw;
+    transform: translateY(10%); 
+}
+
+.mainSection .select .options{
+    z-index: 10;
+    height: 0px;
+    overflow-y: scroll;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: absolute;
+    width: calc(80% - 70px*2);
+    transition: height .2s ease-in-out;
+    scroll-snap-type: y mandatory;
+}
+
+.mainSection .select .options.active{
+    height: calc(7*3rem);
+}
+
+/* width */
+.mainSection .select .options::-webkit-scrollbar {
+    width: 10px;
+    height: 80%;
+}
+  
+  /* Track */
+.mainSection .select .options::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.27);
+    backdrop-filter: blur(11.7px);
+    -webkit-backdrop-filter: blur(11.7px);
+    border-bottom-right-radius: 10px;
+}
+  
+  /* Handle */
+.mainSection .select .options::-webkit-scrollbar-thumb {
+    background: var(--black1);
+    border-radius: 10px;
+}
+
+.mainSection .select .options div{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--grey4);
+    /* background: rgba(255, 255, 255, 0.27);
+    backdrop-filter: blur(11.7px);
+    -webkit-backdrop-filter: blur(11.7px); */
+    border: 1px solid var(--mainWhite);
+    color: var(--black1);
+    padding: 10px 50px;
+    border: var(--black1) solid 1px;
+    font-size:clamp(12px, 2vw , 22px) ;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    scroll-snap-align: start;
+}
+
+.mainSection .select .options div:hover{
+    background-color: var(--grey3);
+    color: var(--grey4);
+}
+
+.mainSection .select .options div.selected{
+    background-color: var(--grey3);
+    color: var(--grey4);
+}
+
+.mainSection .info{
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: var(--grey4);
+    width: 100%;
+    font-size:clamp(12px, 2vw , 22px) ;
+}
+
+.mainSection .info .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.mainSection .info .text div{
+    width: 25vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+
+.mainSection .info .text div.dateCol{
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.mainSection .info .text strong{
+    color: var(--mainWhite);
+}
+
+.mainSection .info .carte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10%;
+    text-align: center;
+    min-width: 40vw;
+}
+
+.mainSection .info .carte .adress{
+    font-size:clamp(8px, 2vw , 15px);
+}
+
+.mainSection .carte #map{
+    width: 100%;
+    height: 40vmin;
+    background-color: var(--grey2);
+    margin-bottom: 20px;
+    border-radius: calc(var(--radius)/3);
+}
+
+footer{
+    position: relative;
+    z-index: -1;
+    bottom: 0;
+}
+
+/*------------------------------------*/
+
+@media screen and (max-width: 535px) {
+
+    .heroSection{
+        height: 60vh;
+    }
+    .heroSection .bgimg{
+        opacity: .3;
+        height: 60%;
+    }
+
+    .heroSection .mainImg {
+      display: none;
+    }
+
+    .heroSection .leftSide{
+        padding: unset;
+        margin: 0 auto;
+    }
+
+    .heroSection .content{
+        width: 75vw;
+        height: 90%;
+    }
+
+    .heroSection .content p{
+        width: 75%;
+        min-width: 200px;
+    }
+
+    .heroSection .arrowDown img{
+        width: 6vw;
+    }
+
+    .mainBtn{
+        margin: 0 auto;
+    }
+
+    .arrowDown{
+        display: none;
+    }
+
+
+    .nbSection{
+        padding: 20px 10px;
+    }
+    .nbSection .container{
+        padding: 15px 20px;
+    }
+    
+    .nbSection .container .flexItem{
+        font-size: clamp(10px, 1vw, 18px);
+        text-align: center;
+    }
+
+    .mainSection{
+        height: 80vh;
+    }
+
+    .mainSection .card{
+        width: 95%;
+        height: 95%;
+        padding: 40px 15px !important;
+    }
+
+    .mainSection .card .select .choice{
+        background-position: right 8% center;
+        background-size: 7.5vw;
+    }
+
+    .mainSection .carte #map{
+        height: 55vmin;
+    }
+
+    .mainSection .select .options{
+        width: calc(95% - 15px*2);
+    }
+
+    .mainSection .card .info{
+        flex-direction: column;
+    }
+    .mainSection .card .text span{
+        width: 60vw;
+    }
+
+    .mainSection .card .text div{
+        width: 60vw;
+    }
+
+    .mainSection .info .text div.dateCol{
+        width: 60vw;
+
+    }
+
+    .mainSection .info .carte{
+        padding-left: 0;
+        min-width: 80vw;
+    }
+  }

@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --mainGreen : #4FB19D;
+    --mainWhite : #EBE9D9;
+    --black1: #161716;
+
+    --grey1: #2F312F;
+    --grey2: #404040;
+    --grey3: #4E504D;
+    --grey4: #959D9C;
+
+    --radius: 80px;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--grey2);
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+body.dark{
+    --mainGreen : #4FB19D;
+    --mainWhite : #404040 ;
+    --black1: #fffce6;
+
+    --grey1: #D4D2BD;
+    --grey2: #EBE9D9;
+    --grey3: #e6e6d9;
+    --grey4: #959D9C;
+}
+
+/* width */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+    background-color: var(--black1);
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+    background: var(--grey3);
+    border-radius: 10px;
+}
+
+.iconBtn{
+    background-color: var(--mainGreen);
+    border-radius: var(--radius);
+    padding: 15px 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0px 4px 30px rgba(79, 177, 157, 0.5);
+    text-transform: uppercase;
+    font-size:clamp(10px, 2vw , 22px) ;
+    white-space: nowrap;
+    transition: all .2s ease-in-out;
+}
+
+.iconBtn img{
+    width: 1.5vw;
+    margin-left: 20px;
+    min-width: 20px;
+    max-width: 40px;
+    transform: rotate(-90deg);
+    transition: all .2s ease-in-out;
+}
+
+.iconBtn:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 4px 40px rgba(79, 177, 157, 0.8);
+
+}
+
+.iconBtn:hover > img{
+    transform: translateX(10px) rotate(-90deg);
+}
+
+header{
+    width: 100%;
+    background-color: var(--black1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 50px;
+}
+
+header .logo{
+    width: 20vw;
+    min-width: 125px;
+    max-width: 170px;
+}
+
+header nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+
+header nav a{
+    color: var(--mainWhite);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: clamp(10px, 1.2vw, 22px);
+    position: relative;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+header nav a::before{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 1px;
+    bottom: 0;
+    right: 0;
+    background-color: var(--mainWhite);
+    transition: all .2s ease-in-out;
+}
+
+header nav a:hover::before{
+    width: 100%;
+    left: 0;
+}
+
+header #param{
+    width: 2vw;
+    min-width: 30px;
+    max-width: 40px;
+    transition: all .4s ease-in-out;
+}
+
+header #param:hover{
+    transform: rotate(90deg);
+}
+
+.mobileNav{
+    z-index: 1001;
+    height: 9vh;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    padding-bottom: 5px;
+    background-color: var(--grey3);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-around;
+    display: none;
+}
+
+.mobileNav a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--mainWhite);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 10px;
+    width: 25vw;
+}
+
+.mobileNav a svg{
+    margin: 10px;
+    height: 3vh;
+}
+
+.mobileNav a p.active{
+    color: var(--mainGreen);
+}
+
+
+
+.switchBox{
+    z-index: 10;
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    right: 10px;
+    padding: 30px 15px;
+    background-color: var(--black1);
+    border-radius: 20px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all .5s ease-in-out;
+}
+
+.switchBox.open{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.switchBox img{
+    width: 20px;
+    height: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #EBE9D9;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #4FB19D;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #404040;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #161716;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(24px);
+}
+
+/*------------------------------------*/
+
+footer{
+    position: absolute;
+    bottom: 50px;
+    height: 150px;
+    width: 100%;
+    background-color: var(--grey2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 50px 50px 50px;
+}
+
+footer .logo{
+    width: 20vw;
+    min-width: 125px;
+    max-width: 170px;
+}
+
+footer .menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+footer .menu img{
+    width: 10px;
+}
+
+footer .menu a{
+    color: var(--mainWhite);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 535px) {
+
+    :root{
+        --radius: 50px;
+    }
+
+    .desktopNav{
+        display: none;
+    }
+
+    .mobileNav{
+        display: flex;
+    }
+
+    footer{
+        bottom: 0;
+        height: unset;
+        padding: 0px 20px 10vh 20px;
+        margin-top: 30px;
+    }
+
+    footer .menu{
+        flex-direction: column;
+    }
+
+    footer .menu a{
+        font-size: clamp(10px, 1vw, 18px);
+        margin-bottom: 10px;
+    }
+
+    footer .menu img{
+        display: none;
+    }
+}

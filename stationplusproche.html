@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/stationproche.css">
+
+    <link rel="icon" href="./images/icon/favicon.svg">
+    <title>Station la plus proche</title>
+</head>
+
+<body class="dark">
+    <header>
+        <a href="./index.html">
+            <img class="logo" src="./images/logo_velostan_entier.svg" alt="logo_velostan">
+        </a>
+        <nav class="desktopNav">
+            <a href="./index.html">Information Stations</a>
+            <a href="#">Station la plus proche</a>
+            <a href="./a_propos.html">à propos</a>
+            <a href="./contact.html">contact</a>
+        </nav>
+        <a href="#">
+            <img src="./images/icon/param.svg" alt="roue cranté" id="param">
+        </a>
+    </header>
+
+    <div id="map">
+        <!-- Ici s'affichera la carte -->
+    </div>
+    <section class="heroSection">
+        <div class="switchBox">
+            <img src="./images/icon/sun.svg" alt="">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            <img src="./images/icon/moon.svg" alt="">
+        </div>
+
+        <nav class="mobileNav">
+            <a href="./index.html">
+                <svg width="153" height="98" viewBox="0 0 153 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="68" r="26" stroke="#959D9C" stroke-width="8"/>
+                    <circle cx="123" cy="68" r="26" stroke="#959D9C" stroke-width="8"/>
+                    <path d="M51.5 26L31.969 64.597C31.2958 65.9273 32.2626 67.5 33.7535 67.5H73M51.5 26L73 67.5M51.5 26H103.697C105.398 26 106.323 27.989 105.226 29.2894L73 67.5M51.5 26L44.5 11M89 4L91.4962 5.6641C91.8247 5.88312 92.2107 6 92.6056 6H104.454C105.364 6 106.16 6.61515 106.389 7.49644L122 67.5" stroke="#959D9C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M34.5 8H60L35.5 15L34.5 8Z" fill="#959D9C" stroke="#959D9C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p>Stations</p>
+            </a>
+            <a href="#">
+                <svg width="87" height="104" viewBox="0 0 87 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M43.5 85.3617C45.383 85.3617 73 45.7924 73 29.5C73 13.2076 59.7924 0 43.5 0C27.2076 0 14 13.2076 14 29.5C14 45.7924 41.617 85.3617 43.5 85.3617ZM43.5 74.0639C44.9022 74.0639 65.4681 41.6315 65.4681 29.9459C65.4681 18.2603 55.6326 8.78729 43.5 8.78729C31.3674 8.78729 21.5319 18.2603 21.5319 29.9459C21.5319 41.6315 42.0978 74.0639 43.5 74.0639Z" fill="#4FB19D"/>
+                    <circle cx="44.1276" cy="30.1276" r="10.8085" stroke="#4FB19D" stroke-width="6"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M29.6765 70.8763C12.4288 73.1338 0 79.4997 0 87C0 96.3888 19.4756 104 43.5 104C67.5244 104 87 96.3888 87 87C87 79.4997 74.5712 73.1338 57.3235 70.8763C55.6243 73.5714 53.9601 76.1042 52.4071 78.3852C59.9324 79.0484 66.4602 80.5205 71.3472 82.4304C74.7372 83.7552 76.9364 85.135 78.1525 86.2587C78.4948 86.5749 78.7111 86.8223 78.8454 87C78.7111 87.1777 78.4948 87.4251 78.1525 87.7413C76.9364 88.8649 74.7372 90.2448 71.3472 91.5696C64.6168 94.1999 54.7742 96 43.5 96C32.2258 96 22.3832 94.1999 15.6528 91.5696C12.2628 90.2448 10.0636 88.8649 8.84751 87.7413C8.50521 87.4251 8.28888 87.1777 8.15461 87C8.28888 86.8223 8.50521 86.5749 8.84751 86.2587C10.0636 85.135 12.2628 83.7552 15.6528 82.4304C20.5398 80.5205 27.0677 79.0484 34.5929 78.3852C33.0399 76.1042 31.3757 73.5714 29.6765 70.8763ZM79.0499 86.6616C79.0514 86.6617 79.0472 86.6767 79.0331 86.7067C79.0414 86.6766 79.0485 86.6616 79.0499 86.6616ZM7.95007 86.6616C7.95151 86.6616 7.95857 86.6766 7.96695 86.7067C7.95283 86.6767 7.94864 86.6617 7.95007 86.6616ZM7.95008 87.3384C7.94864 87.3383 7.95283 87.3233 7.96695 87.2933C7.95857 87.3234 7.95151 87.3384 7.95008 87.3384ZM79.0331 87.2933C79.0472 87.3233 79.0514 87.3383 79.0499 87.3383C79.0485 87.3384 79.0414 87.3234 79.0331 87.2933Z" fill="#4FB19D"/>
+                </svg>
+                <p class="active">Carte</p>
+            </a>
+            <a href="./a_propos.html">
+                <svg width="74" height="126" viewBox="0 0 74 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M43.5264 93.1328C43.5264 104 28.2529 104 28.2529 93.1328C28.2529 82.2656 28.2529 83.8359 28.2529 83.8359C28.2529 78.1361 29.8301 73.2109 32.9844 69.0605C34.9212 66.5703 37.8818 63.4437 41.8662 59.6807C42.6409 59.0166 43.9967 57.8268 45.9336 56.1113C54.2897 48.6406 58.5231 41.1699 58.6338 33.6992C58.6338 25.7305 55.1751 20.0583 48.2578 16.6826L43.0283 14.9395C41.0915 14.4967 39.0439 14.2754 36.8857 14.2754C27.5889 14.2754 21.2526 17.568 17.877 24.1533C15.9401 28.027 15.4434 28.1758 14.9717 40.8379C14.5 53.5 0.52832 52.791 0.52832 40.8379C0.52832 28.8848 3.07389 19.6156 8.16504 13.0303C13.3115 6.44499 20.9759 2.57129 31.1582 1.40918C33.3164 1.13249 35.5299 0.994141 37.7988 0.994141C52.0762 0.994141 62.3691 5.69792 68.6777 15.1055L71.417 20.252C73.1325 24.347 73.9902 28.8294 73.9902 33.6992C73.9902 41.6126 71.085 48.9173 65.2744 55.6133C63.1162 58.2142 60.3493 61.0365 56.9736 64.0801C49.835 70.6654 45.6846 75.4798 44.5225 78.5234C43.8584 80.2389 43.5264 82.4525 43.5264 85.1641C43.5264 85.1641 43.5264 82.2656 43.5264 93.1328Z" fill="#959D9C"/>
+                    <circle cx="36" cy="118" r="8" fill="#959D9C"/>
+                </svg>
+                <p>A Propos</p>
+            </a>
+            <a href="./contact.html">
+                <svg width="72" height="82" viewBox="0 0 72 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.73028 28.2418C6.33781 21.4473 9.08534 14.7107 16.728 7.12436C19.4615 9.35596 21.2194 11.4039 22.5324 13.6388C23.8697 15.9152 24.8205 18.5073 25.7886 21.9563C24.3876 22.603 23.1868 23.2637 22.0821 24.0134C20.3688 25.176 19.0012 26.4754 17.5255 28.059C16.9116 28.7178 16.6261 29.6175 16.7478 30.5097C17.3286 34.7676 18.2879 38.0153 19.8045 41.0777C21.2916 44.0804 23.266 46.7982 25.6751 49.9749L26.358 49.4571L25.675 49.9751C28.0842 53.1516 30.1689 55.7859 32.6593 58.0277C35.1992 60.314 38.0679 62.1136 42.0113 63.8212C42.8377 64.179 43.781 64.1467 44.581 63.7332C46.5039 62.7393 48.1239 61.7728 49.7056 60.4366C50.7253 59.575 51.6855 58.5968 52.686 57.4221C55.7461 59.2845 57.9858 60.8992 59.8172 62.8009C61.6151 64.6679 63.1131 66.913 64.5248 70.1471C55.1584 75.4606 47.9305 76.2895 41.4935 74.0792C34.3163 71.6146 27.4155 65.1605 19.4686 54.6821L19.4687 54.682C11.5218 44.2036 7.16788 35.8178 6.73028 28.2418ZM14.688 58.3076C6.62746 47.6794 1.28767 38.0647 0.740267 28.5878C0.177443 18.844 4.68982 9.98091 14.4874 0.969858C15.5406 0.00123371 17.1312 -0.0887897 18.287 0.754821C22.6562 3.94406 25.5748 6.9723 27.7057 10.5996C29.8011 14.1664 31.0253 18.1364 32.2656 22.9472C32.6431 24.4115 31.8718 25.9279 30.466 26.485C28.1403 27.4069 26.6521 28.1632 25.4512 28.9781C24.5751 29.5727 23.7912 30.2393 22.9094 31.1175C23.42 34.1175 24.1589 36.3505 25.1813 38.4149C26.3881 40.8519 28.0409 43.165 30.4558 46.3494L30.4557 46.3495C32.8707 49.5336 34.6523 51.7489 36.6735 53.5683C38.3857 55.1095 40.3366 56.4232 43.0877 57.724C44.1713 57.1117 45.0246 56.5366 45.8334 55.8533C46.942 54.9167 48.0717 53.6876 49.5866 51.6967C50.5022 50.4933 52.1704 50.1595 53.4787 50.9179C57.7767 53.4097 61.2694 55.6592 64.1389 58.6389C67.0572 61.6692 69.1861 65.2963 71.0788 70.3637C71.5795 71.7041 71.0638 73.2116 69.847 73.9645C58.5275 80.9688 48.7759 82.9237 39.5449 79.7539C30.5668 76.671 22.7484 68.936 14.6878 58.3077L14.688 58.3076Z" fill="#959D9C"/>
+                </svg>
+                    
+                <p>Contact</p>
+            </a>
+        </nav>
+
+        <div class="topSide">
+            <div class="content">
+                <div>
+                <label for="longitude"> Ma Longitude</label>
+                <input class="coo" id="longitude" type="number" value="0" step="0.001" name="long" >
+                </div>
+                <div>
+                <label for="latitude">Ma Latitude</label>
+                <input class="coo" id="latitude" type="number" value="0" step="0.001" name="lat" >
+                </div>
+            </div>                    
+                <a href="#" class="iconBtn">
+                    <span id="boutloc">me localiser</span>
+                    <img src="./images/icon/markerRow.svg" alt="">
+                </a>
+           
+        </div>
+        <div class="bottomSide">
+            <p>La station la plus proche est :</p>
+            <div id="stationproche"> __ __ __ __ __ __ __ __ __ __ __ </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+<script src="js/stationproche.js" type="text/javascript"> </script>
+
+</body>
+
+</html>

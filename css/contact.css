@@ -1,0 +1,75 @@
+.contactSection{
+    position: relative;
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: var(--mainWhite);
+}
+
+.contactSection .mainImg{
+    width: 40vw;
+}
+
+.contactSection .content{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.contactSection .content .partie{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 40vw;
+    font-size: clamp(12px, 2vw , 22px);
+    color: var(--grey4);
+}
+
+.contactIcon{
+    margin-right: 5vmin;
+    width: 5vmin;
+    max-height: 30px;
+}
+
+@media screen and (max-width: 535px) {
+    .contactSection{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .contactSection .content{
+        width: 75vw;
+    }
+    .contactSection .mainImg{
+        width: 55vw;
+    }
+    .contactSection .content .partie{
+        width: 100%;
+        justify-content: center;
+    }
+    footer{
+        position: relative;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
